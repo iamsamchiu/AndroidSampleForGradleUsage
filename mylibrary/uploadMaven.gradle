@@ -1,0 +1,25 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        repositories.maven {
+            url "${project.getProperty('systemProp.maven.serverHost')}"
+            credentials {
+                username "${project.getProperty('systemProp.maven.userName')}"
+                password "${project.getProperty('systemProp.maven.passWord')}"
+            }
+        }
+        maven(MavenPublication) {
+            groupId "com.samtest.myandroidapp"
+            artifactId project.archivesBaseName
+            version "1.0.0"
+            pom.withXml {
+				def scm = asNode().appendNode('scm')
+				scm.appendNode('url', 'https://github.com/iamsamchiu/ReadmePlugin')
+				scm.appendNode('connection', 'scm:https://github.com/iamsamchiu/ReadmePlugin.git')
+				scm.appendNode('developerConnection', 'scm:ssh://git@github.com/iamsamchiu/ReadmePlugin.git'')
+				scm.appendNode('tag', version)
+            }
+        }
+    }
+}
