@@ -82,6 +82,11 @@ def computeVersionName(){
 
 #### Sample task to publish AAR library to maven from a lib-project.
 - /mylibrary/uploadMaven.gradle:
+command:
+```
+$ gradle publishing
+```
+
 ``` groovy
 apply plugin: 'maven-publish'
 
