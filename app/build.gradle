@@ -17,7 +17,7 @@ android {
         applicationId "com.samtest.myandroidapp"
         minSdkVersion "${project.ext.minSdkVersion}"
         targetSdkVersion 22
-        versionCode 1
+        versionCode computeVersionCode()
         versionName computeVersionName()
     }
     buildTypes {
